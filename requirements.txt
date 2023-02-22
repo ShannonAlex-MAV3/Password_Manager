@@ -1,0 +1,7 @@
+Flask
+Flask_session
+requests
+werkzeug
+cryptography
+sqlite3
+

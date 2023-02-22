@@ -1,0 +1,243 @@
+
+
+.content{
+    position: relative;
+    width: 100%;
+    height: -webkit-fill-available;
+
+}
+
+/*font size*/
+.fs-1_5{
+    font-size: 1.5vw;
+}
+
+.pt-5{
+    padding-top: 5%!important;
+}
+
+/* heading in index pg */
+.heading{
+    color: #fff;
+}
+
+/* alert */
+.alert-primary{
+    color: #ff0000;
+    font-size: 111%;
+    background-color: #ffffff;
+}
+
+.alert-secondary{
+    color: #000000;
+    font-size: 111%;
+    background-color: #91ea7d;
+}
+/*btn in index pg */
+.add-btn{
+    margin: 2% 6%;
+    margin-left: 30%;
+}
+.add-btn:hover{
+    color: #fff;
+    background-color: #000;
+}
+
+.pass-field{
+    width: inherit;
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.centre{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.field-menu{
+    width: 60%;
+    padding: 12% 0%;
+    border-radius: 15%;
+}
+.field-menu:hover{
+    background-color: grey;
+}
+/* popup form styles */
+.form-centre{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+}
+.form-centre button{
+    padding: 15px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.form-pop{
+    position: absolute;
+    top: -150%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.25);
+    transition: top 0ms ease-in-out 200ms, 
+                opacity 400ms ease-in-out 200ms,
+                transform 40ms ease-in-out 200ms;
+}
+
+.form-pop{
+    background: #fff;
+    width: 39%;
+    padding: 3%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5%;
+    
+
+}
+.form-active{
+    top: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    transition: top 0ms ease-in-out 200ms,
+                opacity 400ms ease-in-out 200ms,
+                transform 40ms ease-in-out 200ms;   
+}
+
+.pop{
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0,0,0,0.8);
+}
+.form-pop .text{
+    font-size: 125%;
+    font-weight: 500;
+    text-align: center;
+}
+
+.form-pop form{
+    margin-top: -5%;
+}
+
+.form-pop form .field{
+    height: 45px;
+    width: 100%;
+    margin: 9% 0;
+}
+
+form .field input{
+    height: 100%;
+    width: 100%;
+    padding-left: 2%;
+    border: 1px solid lightgrey;
+
+}
+
+
+form .sub-button button{
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: linear-gradient(to left, #56d8e4, #9f01ea, #56d8e4);
+    background-size: 200%;
+    transition: 0.6s;
+    color: #fff;
+}
+
+form .sub-button button:hover{
+    background-position: right;
+
+}
+
+.form-pop .form-close-btn{
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.form-pop .form-close-btn:hover{
+    color: #3498db;
+}        
+/* popup form styles end  */
+
+
+
+/* edit menu pop up */
+.editmenu-pop{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    
+}
+.editmenu{
+    position: absolute;
+    top: -1000px;
+    left: 1000px;
+
+    
+}
+.editmenu{
+    background: #fff;
+    opacity: 0;
+    width: 7%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5%;
+    
+}
+
+.editmenu-active{
+    opacity: 1;
+
+}
+.editmenu-btn{
+    /*padding: 7% 10%;*/
+    border-radius: 5%;
+    font-size: 75%;
+}
+.editmenu-btn a{
+    text-decoration: none;
+    color: #000;
+    
+}
+
+.editmenu-btn button:hover{
+    background-color: rgb(192, 184, 184);
+}
+.editmenu-btn button{
+    border: none;
+    padding: 7% 10%;
+    margin: 3%;
+    width: 95%;
+    /* height: 89%; */
+    background-color: white;
+    font-size: 90%;
+    border-radius: 7%;
+    text-align: left;
+
+}
+/* edit menu popup end */
+
+
+/* footer */
+.bg-color-footer
+{
+    color: #000;
+    background-color: #fff;
+
+}
+
+.footer{
+    padding-top: 1%;
+}
+

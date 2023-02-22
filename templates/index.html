@@ -1,0 +1,232 @@
+{% extends "layout.html" %}
+
+{% block title %} Home {% endblock%}
+
+{% block head%}
+<style>
+    body {
+        background-image: url(static/bg.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        opacity: 95%;
+        font-family: "system-ui", sans-serif;
+    }
+</style>
+
+{% endblock%}
+
+
+
+{% block main %}
+<div class="bg-img">
+    <div class="content">
+
+        <div class="pt-5">
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-primary mb-0 text-center" role="alert" style="position: relative; top: 10%; margin-top: 1%;">
+                {{message}}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+
+
+
+            <div class="container" style="padding-bottom: 10%;">
+                <div class="row">
+                    <div class="col-9 text-center heading">
+                        <h2>{{ length }} Saved Passwords</h2>
+                    </div>
+                    <div class="col-3">
+                        <button type="button" class="btn btn-light add-btn" id="add-password">Add Password</button>
+                    </div>
+
+
+                </div>
+
+                <!--popup form area-->
+                <div class="form-open">
+                    <div class="form-pop form-centre">
+                        <!--close icon-->
+                        <div class="form-close-btn">&times;</div>
+                        <!--form start-->
+                        <div class="text">Add Password</div>
+                        <form action="/add_password" method="post">
+
+                            <div class="field">
+                                <label>Website</label>
+                                <input type="text" id="website" name="website" placeholder="ex:google.com" required>
+                            </div>
+
+                            <div class="field">
+                                <label>Username</label>
+                                <input type="text" id="username" name="username" required>
+                            </div>
+
+                            <div class="field">
+                                <label>Password</label>
+                                <input type="text" id="password" name="password" required>
+                            </div>
+
+                            <div class="sub-button">
+                                <button class="btn" type="submit">Save</button>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+
+                <!-- titles of cols of grid-->
+                <div class="row border-bottom" style="width: 80%; margin-left: 10%; color: white; margin-bottom: 1%;">
+
+                    <!--website-->
+                    <div class="col-3">
+                        <h5 class="">Website</h5>
+
+                    </div>
+
+                    <!--username-->
+                    <div class="col-4">
+                        <h5 class="">Username</h5>
+                    </div>
+
+                    <!--password-->
+                    <div class="col-4">
+                        <h5 class="">Password</h5>
+                    </div>
+
+                    <!--edit menu - 3dots-->
+                    <div class="col-1">
+
+                    </div>
+
+                </div>
+
+
+                {% for i in range(length) %}
+                <!-- data of cols of grid-->
+                <div class="row" style="width: 80%; margin-left: 10%; color: white; padding: 0.3%;">
+
+                    <!--website-->
+                    <div class="col-3">
+                        <h6 class="">
+                            <a href="{{ Data_list[i][2] }}" style="color: #fff; text-decoration: none; border-bottom: 1px solid; ">
+                            {{Data_list[i][2] }}
+                            </a>
+                        </h6>
+
+                    </div>
+
+                    <!--username-->
+                    <div class="col-4">
+                        <input type="text" value="{{ Data_list[i][3] }}" style="border: none; background: transparent; color: white; width: 100%; font-family: Consolas, monospace;">
+
+                    </div>
+
+                    <!--password-->
+                    <div class="col-3">
+                        <div class="row">
+                            <div class="col-10">
+                                <input class="pass-field" type="password" readonly value="{{ Data_list[i][4] }}">
+                            </div>
+                            <div class="col-2 eyes" id="row" style="padding:0%;">
+                                <img src="/static/eye.png" alt="" width="80%">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--spacing-->
+                    <div class="col-1"> </div>
+
+                    <!--edit menu - 3dots-->
+                    <div class="col-1">
+                        <div class="field-menu">
+                            <img src="/static/menu.png" alt="" width="55%" class="centre">
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+                <!--dot menu popup-->
+                <div class="editmenu-area">
+
+                    <!--menu-->
+                    <div class="editmenu">
+                        <div class="editmenu-btn">
+                            <!--
+                            <a href="/edit/{{ Data_list[i]}}">Edit</a>
+                            -->
+                            <input value="{{ Data_list[i] }}" hidden>
+                            <button type="submit" class="edit-btn">Edit</button>
+                        </div>
+
+                        <!--
+                        <div class="editmenu-btn">
+                            <a href="">Copy</a>
+                        </div>
+                        -->
+                        <div class="editmenu-btn">
+                            <form action="/delete" method="post">
+                                <input value="{{ Data_list[i][1] }}" name="delete" hidden>
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <!--popup form area for edit password-->
+                <div class="editpass-open">
+                    <div class="form-pop form-centre">
+                        <!--close icon-->
+                        <div class="form-close-btn">&times;</div>
+                        <!--form start-->
+                        <div class="text">Edit Password Details</div>
+                        <form action="/update" method="post">
+
+                            <input type="text" name="pass_id" value="{{ Data_list[i][1] }}" hidden>
+                            <div class="field">
+                                <label>Website</label>
+                                <input type="text" name="website"
+                                    value="{{ Data_list[i][2] }}" required>
+                            </div>
+
+                            <div class="field">
+                                <label>Username</label>
+                                <input type="text" name="username" required>
+                            </div>
+
+                            <div class="field">
+                                <label>Password</label>
+                                <input type="text" name="password" required>
+                            </div>
+
+                            <div class="sub-button">
+                                <button class="btn" type="editsubmit">Save</button>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+                {%endfor%}
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="static/script.js"></script>
+{% endblock %}
